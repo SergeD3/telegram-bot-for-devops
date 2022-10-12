@@ -11,7 +11,7 @@
   <body>
     <div class="wrap_er">
       <div class="main_cont">      
-        <form class="row g-3">
+        <form class="row g-3" id="feedback">
           <div class="col-md-6">
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">Stage:</span>
@@ -21,31 +21,31 @@
           <div class="col-md-6">
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">Версия Core (cml_bench):</span>
-              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+              <input type="text" class="form-control" id="core" placeholder="" aria-label="" aria-describedby="basic-addon1">
             </div>
           </div>
           <div class="col-md-6">
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">Версия UI (cml_ui):</span>
-              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+              <input type="text" class="form-control" id="ui" placeholder="" aria-label="" aria-describedby="basic-addon1">
             </div>
           </div>
           <div class="col-md-6">
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">Версия LM (licenses_manager_server):</span>
-              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+              <input type="text" class="form-control" id="lm" placeholder="" aria-label="" aria-describedby="basic-addon1">
             </div>
           </div>
           <div class="col-md-6">
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">Версия и язык словарей (Рус/Англ):</span>
-              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+              <input type="text" class="form-control" id="dict" placeholder="" aria-label="" aria-describedby="basic-addon1">
             </div>
           </div>
           <div class="col-md-6">
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">Версия Elegans (elegans_server):</span>
-              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+              <input type="text" class="form-control" id="elegans" placeholder="" aria-label="" aria-describedby="basic-addon1">
             </div>
           </div>
 
@@ -56,6 +56,7 @@
     </div>
   </div>
   <script src="main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </body>
 </html>
 
