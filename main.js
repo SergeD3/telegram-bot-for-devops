@@ -12,14 +12,34 @@ document.getElementById('feedback').addEventListener('submit', function(e) {
     let lm = document.querySelector('#lm').value;
     let dict = document.querySelector('#dict').value;
     let elegans = document.querySelector('#elegans').value;
+    let success = document.getElementById('success');
 
     let message = `<b>Stage:</b> ${ stage }\n<b>Версия Core (cml_bench):</b> ${ core_version }\n`+
     `<b>Версия UI (cml_ui):</b> ${ ui }\n<b>Версия LM (licenses_manager_server):</b> ${ lm }\n`+
     `<b>Версия и язык словарей (Рус/Англ):</b> ${ dict }\n<b>Версия Elegans (elegans_server):</b> ${ elegans }`;
 
+    if(stage !== ''){
     axios.post(URL, {
         chat_id: CHAT_ID,
         parse_mode: 'html',
-        text: message,
+        text: message
+    })
+    .then((res) => {
+        console.log(res);
+        success.innerHTML = 'Сообщение успешно отправлено!';
+        success.style.display = 'block';
+        setTimeout(refresh_window, 2000);
+    })
+    .catch((err) => {
+        console.warn(err);
+        success.innerHTML = 'Возникла ошибка!';
+        success.style.display = 'block';
     });
+}else{
+    alert('Заполни поля, Братан!');
+};
 });
+
+const refresh_window = () =>{
+    window.location.reload();
+};
