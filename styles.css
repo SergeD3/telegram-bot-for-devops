@@ -1,3 +1,17 @@
 .main_cont {
-    margin: 100px 100px 100px 100px;
+    width: 1100px;
+    /* margin: 100px 100px 100px 100px; */
+   /*  background-color: rgb(196, 130, 44); */
+    padding: 10px;
+    position: fixed; top: 40%; left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.wrap_er{
+    width: 100%;
+    justify-content: center;
+}
+#sub_but{
+    margin: 10px;
 }
