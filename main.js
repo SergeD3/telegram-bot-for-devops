@@ -18,7 +18,7 @@ document.getElementById('feedback').addEventListener('submit', function(e) {
     `<b>Версия UI (cml_ui):</b> ${ ui }\n<b>Версия LM (licenses_manager_server):</b> ${ lm }\n`+
     `<b>Версия и язык словарей (Рус/Англ):</b> ${ dict }\n<b>Версия Elegans (elegans_server):</b> ${ elegans }`;
 
-    if(stage !== ''){
+    if(stage != '' || core_version != '' || ui != '' || lm != '' || dict != '' || elegans != ''){
     axios.post(URL, {
         chat_id: CHAT_ID,
         parse_mode: 'html',
