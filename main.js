@@ -4,6 +4,26 @@ let TOKEN = '5718226294:AAGlZFU8-RazR0HmUPOuYwPybVjGN64MUL8';
 let CHAT_ID = '-1001831051095';
 let URL = `https://api.telegram.org/bot${ TOKEN }/sendMessage`;
 
+
+
+document.getElementById('inputGroupSelect01').addEventListener('input', function(t) {
+    let get_sel = document.querySelector('#inputGroupSelect01');
+    let get_team = document.querySelector('#team');
+    let sel_value = get_sel.value;
+    // let sel_text = get_sel.options[get_sel.selectedIndex].text; get text from select
+    switch(sel_value){
+        case '1':
+            get_team.setAttribute('value', 'Команда А. Мяснова');
+            break;
+        case '2':
+            get_team.setAttribute('value', 'Команда М. Болсуновской');
+            break;
+        case '3':
+            get_team.setAttribute('value', 'Команда А. Тамма');
+            break;
+    };
+});
+
 document.getElementById('feedback').addEventListener('submit', function(e) {
     e.preventDefault();
     let stage = document.querySelector('#stage').value;
