@@ -14,9 +14,9 @@ document.getElementById('feedback').addEventListener('submit', function(e) {
     let elegans = document.querySelector('#elegans').value;
     let success = document.getElementById('success');
 
-    let message = `<b>Stage:</b> ${ stage }\n<b>Версия Core (cml_bench):</b> ${ core_version }\n`+
-    `<b>Версия UI (cml_ui):</b> ${ ui }\n<b>Версия LM (licenses_manager_server):</b> ${ lm }\n`+
-    `<b>Версия и язык словарей (Рус/Англ):</b> ${ dict }\n<b>Версия Elegans (elegans_server):</b> ${ elegans }`;
+    let message = `<b>Stage:</b>  ${ stage }\n<b>Версия Core (cml_bench):</b>  ${ core_version }\n`+
+    `<b>Версия UI (cml_ui):</b>  ${ ui }\n<b>Версия LM (licenses_manager_server):</b>  ${ lm }\n`+
+    `<b>Версия и язык словарей (Рус/Англ):</b>  ${ dict }\n<b>Версия Elegans (elegans_server):</b>  ${ elegans }`;
 
     if(stage != '' || core_version != '' || ui != '' || lm != '' || dict != '' || elegans != ''){
     axios.post(URL, {
