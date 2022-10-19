@@ -4,14 +4,15 @@ let TOKEN = '5718226294:AAGlZFU8-RazR0HmUPOuYwPybVjGN64MUL8';
 let CHAT_ID = '-1001831051095';
 let URL = `https://api.telegram.org/bot${ TOKEN }/sendMessage`;
 
-
-
 document.getElementById('inputGroupSelect01').addEventListener('input', function(t) {
     let get_sel = document.querySelector('#inputGroupSelect01');
     let get_team = document.querySelector('#team');
     let sel_value = get_sel.value;
-    // let sel_text = get_sel.options[get_sel.selectedIndex].text; get text from select
+    let sel_text = get_sel.options[get_sel.selectedIndex].text;
     switch(sel_value){
+        case '0':
+            get_team.setAttribute('value', '-');
+            break;
         case '1':
             get_team.setAttribute('value', 'Команда А. Мяснова');
             break;
@@ -22,6 +23,11 @@ document.getElementById('inputGroupSelect01').addEventListener('input', function
             get_team.setAttribute('value', 'Команда А. Тамма');
             break;
     };
+});
+
+document.getElementById('res_but').addEventListener('click', function(){
+    let get_team_reset = document.querySelector('#team');
+    get_team_reset.setAttribute('value', '-');
 });
 
 document.getElementById('feedback').addEventListener('submit', function(e) {
