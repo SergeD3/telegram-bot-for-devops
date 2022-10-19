@@ -8,7 +8,7 @@ document.getElementById('inputGroupSelect01').addEventListener('input', function
     let get_sel = document.querySelector('#inputGroupSelect01');
     let get_team = document.querySelector('#team');
     let sel_value = get_sel.value;
-    let sel_text = get_sel.options[get_sel.selectedIndex].text;
+    
     switch(sel_value){
         case '0':
             get_team.setAttribute('value', '-');
@@ -40,9 +40,14 @@ document.getElementById('feedback').addEventListener('submit', function(e) {
     let elegans = document.querySelector('#elegans').value;
     let success = document.getElementById('success');
 
+    let get_sel1 = document.querySelector('#inputGroupSelect01');
+    let sel_text1 = get_sel1.options[get_sel1.selectedIndex].text;
+    let get_team1 = document.querySelector('#team').value;
+
     let message = `<b>Stage:</b>  ${ stage }\n<b>Версия Core (cml_bench):</b>  ${ core_version }\n`+
     `<b>Версия UI (cml_ui):</b>  ${ ui }\n<b>Версия LM (licenses_manager_server):</b>  ${ lm }\n`+
-    `<b>Версия и язык словарей (Рус/Англ):</b>  ${ dict }\n<b>Версия Elegans (elegans_server):</b>  ${ elegans }`;
+    `<b>Версия и язык словарей (Рус/Англ):</b>  ${ dict }\n<b>Версия Elegans (elegans_server):</b>  ${ elegans }`+
+    `\n<b>Пользователь:</b>  ${ sel_text1 }\n<b>Команда:</b>  ${ get_team1 }`;
 
     if(stage != '' || core_version != '' || ui != '' || lm != '' || dict != '' || elegans != ''){
     axios.post(URL, {
