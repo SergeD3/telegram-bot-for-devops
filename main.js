@@ -5,22 +5,20 @@ let CHAT_ID = '-1001831051095';
 let URL = `https://api.telegram.org/bot${ TOKEN }/sendMessage`;
 
 document.getElementById('inputGroupSelect01').addEventListener('input', function(t) {
-    let get_sel = document.querySelector('#inputGroupSelect01');
-    let get_team = document.querySelector('#team');
-    let sel_value = get_sel.value;
-    
-    switch(sel_value){
+    let get_t_u = get_user_team();
+
+    switch(get_t_u.user_value){
         case '0':
-            get_team.setAttribute('value', '-');
+            get_t_u.get_t.setAttribute('value', '-');
             break;
         case '1':
-            get_team.setAttribute('value', 'Команда А. Мяснова');
+            get_t_u.get_t.setAttribute('value', 'А. Мяснова');
             break;
         case '2':
-            get_team.setAttribute('value', 'Команда М. Болсуновской');
+            get_t_u.get_t.setAttribute('value', 'М. Болсуновской');
             break;
         case '3':
-            get_team.setAttribute('value', 'Команда А. Тамма');
+            get_t_u.get_t.setAttribute('value', 'А. Тамма');
             break;
     };
 });
@@ -39,15 +37,12 @@ document.getElementById('feedback').addEventListener('submit', function(e) {
     let dict = document.querySelector('#dict').value;
     let elegans = document.querySelector('#elegans').value;
     let success = document.getElementById('success');
-
-    let get_sel1 = document.querySelector('#inputGroupSelect01');
-    let sel_text1 = get_sel1.options[get_sel1.selectedIndex].text;
-    let get_team1 = document.querySelector('#team').value;
+    let getUserTeam = get_user_team();
 
     let message = `<b>Stage:</b>  ${ stage }\n<b>Версия Core (cml_bench):</b>  ${ core_version }\n`+
     `<b>Версия UI (cml_ui):</b>  ${ ui }\n<b>Версия LM (licenses_manager_server):</b>  ${ lm }\n`+
     `<b>Версия и язык словарей (Рус/Англ):</b>  ${ dict }\n<b>Версия Elegans (elegans_server):</b>  ${ elegans }`+
-    `\n<b>Пользователь:</b>  ${ sel_text1 }\n<b>Команда:</b>  ${ get_team1 }`;
+    `\n<b>Пользователь:</b>  ${ getUserTeam.user_name }\n<b>Команда:</b>  ${ getUserTeam.teamName }`;
 
     if(stage != '' || core_version != '' || ui != '' || lm != '' || dict != '' || elegans != ''){
     axios.post(URL, {
@@ -67,9 +62,19 @@ document.getElementById('feedback').addEventListener('submit', function(e) {
         success.style.display = 'block';
     });
 }else{
-    alert('Заполни поля, Братан!');
+    alert('Необходимо заполнить хотя бы одно поле!');
 };
 });
+
+const get_user_team = () => {
+    let get_sel = document.querySelector('#inputGroupSelect01'); // получаю объект поля Пользователь select
+    let get_team = document.querySelector('#team'); // получаю объект поля Команда
+    let team_name = get_team.value; // получаю название команды
+    let sel_text = get_sel.options[get_sel.selectedIndex].text; // получаю ФИО сотрудника
+    let sel_value = get_sel.value; // получаю номер команды
+
+    return {sel_obj: get_sel, get_t: get_team, user_name: sel_text, user_value: sel_value, teamName: team_name};
+};
 
 const refresh_window = () =>{
     window.location.reload();
